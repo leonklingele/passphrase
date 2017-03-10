@@ -26,7 +26,7 @@ s, err := passphrase.Generate(7)
 
 ## Recommended number of words
 
-Make sure to generate passphrases with at least 7 words. This yields around 90 bits ([ld(7776^7)](https://www.wolframalpha.com/input/?i=ld(7776%5E7))) of entropy which is more than enough.
+Make sure to generate passphrases with at least 7 words. This yields around 90 bits of entropy ([ld(7776^7)](https://www.wolframalpha.com/input/?i=ld(7776%5E7))) which is more than enough.
 
 ## Wordlist
 
