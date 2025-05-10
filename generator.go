@@ -19,7 +19,7 @@ var (
 
 	// Separator specifies the delimiter to join passphrase words with
 	// Example (separator is a dash symbol): correct-horse-battery-staple
-	Separator = " "
+	Separator = " " //nolint:gochecknoglobals // TODO: Get rid of global variable as it makes everything racy
 )
 
 // Generate generates a passphrase with length 'l' words each separated by passphrase.Separator
@@ -35,10 +35,10 @@ func Generate(l int) (string, error) {
 	}
 
 	buf := make([]string, l)
-	max := big.NewInt(int64(len(wordList)))
+	maxlen := big.NewInt(int64(len(wordList)))
 
-	for i := 0; i < l; i++ {
-		index, err := randomInt(max)
+	for i := range l {
+		index, err := randomInt(maxlen)
 		if err != nil {
 			return "", err
 		}
@@ -49,10 +49,10 @@ func Generate(l int) (string, error) {
 	return strings.Join(buf, Separator), nil
 }
 
-func randomInt(max *big.Int) (int, error) {
-	i, err := rand.Int(rand.Reader, max)
+func randomInt(maxlen *big.Int) (int, error) {
+	i, err := rand.Int(rand.Reader, maxlen)
 	if err != nil {
-		return 0, err
+		return 0, err //nolint:wrapcheck // Fine to not wrap this here
 	}
 
 	return int(i.Int64()), nil
