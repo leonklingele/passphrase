@@ -1,6 +1,6 @@
 # Passphrase generator in Go
 
-[![Build Status](https://travis-ci.org/leonklingele/passphrase.svg?branch=master)](https://travis-ci.org/leonklingele/passphrase)
+![test](https://github.com/leonklingele/passphrase/actions/workflows/test.yml/badge.svg)
 
 A simple library to generate passphrases.
 
